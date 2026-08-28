@@ -1,0 +1,87 @@
+:root {
+  --Neutral-900: hsl(0, 0%, 7%);
+  --Neutral-800: hsl(0, 0%, 15%);
+  --Neutral-700: hsl(240, 3%, 20%);
+
+  --Neutral-500: hsl(240, 3%, 46%);
+  --Neutral-400: hsl(240, 1%, 59%);
+  --Neutral-0: hsl(0, 0%, 100%);
+
+  --Blue-600: hsl(214, 100%, 55%);
+  --Blue-500: hsl(210, 100%, 65%);
+
+  --Red-500: hsl(354, 63%, 57%);
+
+  --Green-500: hsl(140, 63%, 57%);
+
+  --Yellow-400: hsl(49, 85%, 70%);
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+body {
+  font-family: "Sora";
+  color: var(--Neutral-400);
+  background-color: var(--Neutral-900);
+}
+p {
+  margin-bottom: 0 !important;
+}
+.border-end,
+.border-bottom {
+  border-color: var(--Neutral-800) !important;
+}
+.border {
+  border-color: var(--Neutral-500) !important;
+}
+.correct {
+  color: var(--Green-500);
+  transition: 0.3s;
+}
+.incorrect {
+  color: var(--Red-500);
+  position: relative;
+  transition: 0.3s;
+}
+.curser {
+  transition: 0.2s;
+  background-color: var(--Neutral-700);
+  border-radius: 7px;
+}
+.incorrect::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--Red-500);
+  transition: 0.3s;
+}
+.color-Yellow {
+  color: var(--Yellow-400);
+}
+.bg-blue-600{
+  background-color: var(--Blue-600);
+}
+.dropdown button {
+  width: 100%;
+}
+#words{
+  filter: blur(4px);
+}
+@media (max-width: 992px) {
+  .w100 {
+    width: 100% !important;
+  }
+  .letter-format {
+    font-size: 1.7rem;
+  }
+}
+@media (min-width: 992px) {
+  .letter-format {
+    font-size: 2rem;
+  }
+}

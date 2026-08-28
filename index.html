@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Typing Speed Test</title>
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Sora:wght@100..800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+  <header class="container pt-4  pb-3 ">
+    <nav class="d-flex justify-content-between">
+      <!-- logo -->
+      <img src="assets/images/logo-large.svg" class="d-none d-lg-block" alt="">
+      <img src="assets/images/logo-small.svg" class="d-lg-none" alt="">
+      <!-- personal best -->
+      <div class="">
+        <img src="assets/images/icon-personal-best.svg" class="d-inline-block " alt="">
+        <span class="d-none d-lg-inline">Personal best: </span>
+        <span class="d-lg-none">Best: </span>
+        <span id="PB">WPM</span>
+      </div>
+    </nav>
+    <!-- options -->
+    <div class="mt-5 d-none d-flex flex-column flex-lg-row  justify-content-between align-items-center border-bottom border-2">
+      <!-- details -->
+      <div class="d-flex text-center mb-3 mb-lg-0">
+        <div class="border-end border-2 me-3">
+          <p class="me-4  ">WPM: <span id="WPM" class="fw-bold fs-5  ">99</span></p>
+        </div>
+        <div class="border-end border-2 me-3">
+          <p class="me-4">Accuracy: <span id="Accuracy" class="fw-bold fs-5 ">99</span></p>
+        </div>
+        <div class="border-end border-2 me-3">
+          <p class="me-lg-4">Time: <span id="Time" class=" color-Yellow fw-bold fs-5  ">99</span>
+          </p>
+        </div>
+      </div>
+      <!-- options -->
+      <div class="d-flex align-items-center mb-3 w100  gap-3">
+
+        <!-- lg screen -->
+        <!-- difficulty -->
+        <div class="d-lg-flex  align-items-center border-end border-2 d-none ">
+          <p class="me-2">Difficulty:</p>
+          <button type="button" name="easy" id="easy" class="btn border text-light me-2 rounded-3">Easy</button>
+          <button type="button" name="medium" id="medium" class="btn border text-light me-2 rounded-3">Medium</button>
+          <button type="button" name="hard" id="hard" class="btn border text-light me-2 rounded-3">Hard</button>
+
+        </div>
+        <!-- mode -->
+        <div class="d-lg-flex ms-2 align-items-center d-none">
+          <p class="me-2">Mode:</p>
+          <button type="button" class="btn border text-light me-2 rounded-3">Timed(60)</button>
+          <button type="button" class="btn border text-light  rounded-3">Passage</button>
+        </div>
+
+        <!-- phone screen -->
+        <!-- difficulty -->
+        <div class="dropdown d-lg-none flex-grow-1  ">
+          <button class="btn border text-light   dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Difficulty
+          </button>
+          <ul class="dropdown-menu">
+            <li><a onclick="easy.click()" class="dropdown-item" href="#">Easy</a></li>
+            <li><a onclick="medium.click()" class="dropdown-item" href="#">Medium</a></li>
+            <li><a onclick="hard.click()" class="dropdown-item" href="#">Hard</a></li>
+          </ul>
+        </div>
+        <!-- mode -->
+        <div class="dropdown d-lg-none flex-grow-1 ">
+          <button class="btn border  text-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Mode
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div>
+
+
+
+      </div>
+    </div>
+  </header>
+
+  <main class="position-relative">
+    <div class="container">
+      <div id="words" class="d-none"></div>
+      <!-- start button -->
+      <div class="position-absolute start-50 top-50 translate-middle d-none">
+        <button id="start" type="button" class="btn text-light bg-blue-600 ">Start Typing Text</button>
+      </div>
+    </div>
+    <!-- result page -->
+    <div class="d-flex flex-column justify-content-center">
+      <img src="" id="result-img" alt="">
+      <h1 id="result-title"></h1>
+      <p id="result-text"></p>
+      <div class="d-flex ">
+
+      </div>
+    </div>
+    <!-- <audio src="assets/audio/Y2Mate.is -  _   _   -  -   -   -    2019.mp3" autoplay  controls class=""></audio> -->
+  </main>
+
+
+  <!-- <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+    Coded by <a href="#">Your Name Here</a>.
+  </footer> -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script type="module" src="dist/index.js"></script>
+</body>
+
+</html>
