@@ -127,6 +127,17 @@ start.addEventListener("click", () => {
   startGame();
 });
 
+let resultImg = document.getElementById("result-img") as HTMLImageElement;
+let resultTitle = document.getElementById("result-title") as HTMLHeadingElement;
+let resultText = document.getElementById("result-text") as HTMLParagraphElement;
+
+function resultPage() {
+  resultImg.src = "./assets/images/icon-completed.svg";
+  resultTitle.style = `color : white`;
+  resultTitle.textContent = "Test Complete!";
+  resultText.innerText = "Solid run. Keep pushing to beat your high score.";
+}
+resultPage();
 fetch("./data.json")
   .then((response) => response.json())
   .then((data) => {
@@ -142,5 +153,5 @@ fetch("./data.json")
       hard(data);
       display(data, "hard");
     });
-    hardBtn.click()
+    hardBtn.click();
   });
