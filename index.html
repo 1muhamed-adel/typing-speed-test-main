@@ -35,8 +35,8 @@
       </div>
     </nav>
     <!-- options -->
-    <div
-      class="mt-5 d-none d-flex flex-column flex-lg-row  justify-content-between align-items-center border-bottom border-2">
+    <div id="options"
+      class="mt-5 d-flex flex-column flex-lg-row  justify-content-between align-items-center border-bottom border-2">
       <!-- details -->
       <div class="d-flex text-center mb-3 mb-lg-0">
         <div class="border-end border-2 me-3">
@@ -95,22 +95,26 @@
           </ul>
         </div>
 
-
-
       </div>
     </div>
   </header>
 
   <main class="position-relative">
+    <!-- loading -->
+    <div id="loading" class="spinner-border position-absolute top-50 end-50  " role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <!-- words -->
     <div class="container">
-      <div id="words" class="d-none"></div>
+      <div id="words" class=""></div>
       <!-- start button -->
-      <div class="position-absolute start-50 top-50 translate-middle d-none">
-        <button id="start" type="button" class="btn text-light bg-blue-600 ">Start Typing Text</button>
+      <div id="start-div" class="position-absolute start-50 top-50 translate-middle text-center d-none">
+        <button id="start" type="button" class="btn text-light bg-blue-600  mb-3">Start Typing Text</button>
+        <p id="start-title" class="text-light">Or click the text and start typing</p>
       </div>
     </div>
     <!-- result page -->
-    <div class="d-flex flex-column align-items-center mt-5">
+    <div id="result" class=" d-none flex-column align-items-center mt-5">
 
       <div class="rounded-circle green-shadow-700 mb-3">
         <img src="" id="result-img" class=" w-100 green-shadow-600 rounded-circle" alt="">
@@ -137,7 +141,8 @@
       <div class="container text-end ">
         <img src="./assets/images/pattern-star-1.svg" alt="">
       </div>
-      <button type="button" id="restart" class="btn btn-light"><span class="me-2">Go Again</span><i class="fa-solid fa-sm fa-rotate-left"></i>
+      <button type="button" id="restart" class="btn btn-light"><span class="me-2">Go Again</span><i
+          class="fa-solid fa-sm fa-rotate-left"></i>
       </button>
     </div>
     <!-- <audio src="assets/audio/Y2Mate.is -  _   _   -  -   -   -    2019.mp3" autoplay  controls class=""></audio> -->
