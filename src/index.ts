@@ -11,11 +11,13 @@ interface level {
 let easyBtn = document.getElementById("easy") as HTMLButtonElement;
 let medBtn = document.getElementById("medium") as HTMLButtonElement;
 let hardBtn = document.getElementById("hard") as HTMLButtonElement;
+let timeBtn = document.getElementById("time-btn") as HTMLButtonElement;
+let passageBtn = document.getElementById("passage-btn") as HTMLButtonElement;
 let words = document.getElementById("words") as HTMLElement;
 let time = document.getElementById("Time") as HTMLElement;
-let startDiv = document.getElementById('start-div') as HTMLDivElement
+let startDiv = document.getElementById("start-div") as HTMLDivElement;
 let start = document.getElementById("start") as HTMLButtonElement;
-let startTitle =document.getElementById('start-title') as HTMLParagraphElement
+let startTitle = document.getElementById("start-title") as HTMLParagraphElement;
 let timer = 60;
 let acc;
 time.textContent = String(timer);
@@ -71,27 +73,54 @@ function wpm(startTime: number, endTime: number) {
   const elapsedSeconds = (endTime - startTime) / 1000;
   const wpm = 0;
 }
+function disableBtn() {
+  easyBtn.classList.add("disabled");
+  medBtn.classList.add("disabled");
+  hardBtn.classList.add("disabled");
+  timeBtn.classList.add("disabled");
+  passageBtn.classList.add("disabled");
+}
+// function enableBtn(){
+//    easyBtn.classList.remove('disabled')
+//   medBtn.classList.remove('disabled')
+//   hardBtn.classList.remove('disabled')
+// }
 let startTime: number;
 let endTime: number;
 let currentLetter: Element | undefined;
 let typedChar: number = 0;
 let interval: any;
 function startGame() {
+  disableBtn();
   timer = 60;
   startTime = Date.now();
+  if (timeBtn.classList.contains("active")) {
+    console.log('dula')
+    interval = setInterval(() => {
+      timer--;
+      time.textContent = `0:${timer}`;
+      if (timer <= 0) {
+        clearInterval(interval);
+        endGame(typedChar);
+      }
+    }, 1000);
+  }
   currentLetter = words.children[0];
   currentLetter?.classList.add("curser");
-
-  interval = setInterval(() => {
-    timer--;
-    time.textContent = `0:${timer}`;
-    if (timer <= 0) {
-      clearInterval(interval);
-      endGame(typedChar);
-    }
-  }, 1000);
   window.addEventListener("keyup", handleTyping);
 }
+
+timeBtn.addEventListener("click", () => {
+  timeBtn.classList.add("active");
+  passageBtn.classList.remove("active");
+  time.classList.remove('d-none')
+
+});
+passageBtn.addEventListener("click", () => {
+  timeBtn.classList.remove("active");
+  passageBtn.classList.add("active");
+  time.classList.add('d-none')
+});
 
 function endGame(count: number) {
   window.removeEventListener("keyup", handleTyping);
@@ -131,9 +160,9 @@ function handleTyping(e: KeyboardEvent) {
   currentLetter?.classList.add("curser");
 }
 
-words.addEventListener('mouseup', () => {
+words.addEventListener("mouseup", () => {
   words.style = `filter : blur(0)`;
-  startDiv.classList.add('d-none')
+  startDiv.classList.add("d-none");
   startGame();
 });
 start.addEventListener("click", () => {
@@ -159,7 +188,7 @@ function resultPage() {
     result.classList.replace("d-flex", "d-none");
     options.classList.replace("d-none", "d-flex");
     words.classList.replace("d-none", "d-block");
-    startDiv.classList.remove('d-none')
+    startDiv.classList.remove("d-none");
     location.reload();
   });
 }
@@ -174,14 +203,23 @@ fetch("./data.json")
     easyBtn.addEventListener("click", () => {
       easy(data);
       display(data, "easy");
+      easyBtn.classList.add("active");
+      medBtn.classList.remove("active");
+      hardBtn.classList.remove("active");
     });
     medBtn.addEventListener("click", () => {
       medium(data);
       display(data, "medium");
+      easyBtn.classList.remove("active");
+      medBtn.classList.add("active");
+      hardBtn.classList.remove("active");
     });
     hardBtn.addEventListener("click", () => {
       hard(data);
       display(data, "hard");
+      easyBtn.classList.remove("active");
+      medBtn.classList.remove("active");
+      hardBtn.classList.add("active");
     });
     resultbtn.addEventListener("click", () => {
       display(data, "hard");

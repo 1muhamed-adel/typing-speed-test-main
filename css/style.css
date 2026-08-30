@@ -85,9 +85,12 @@ p {
 .green-shadow-700{
   box-shadow: 0 0 2px 25px var(--Green-700);
 }
-.active{
-  color: var();
+.active,button:hover{
+  color: var(--Blue-500) !important;
+  border-color: var(--Blue-500) !important;
+  
 }
+
 #result{
   transition: 1s;
 }
