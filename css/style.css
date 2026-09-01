@@ -52,7 +52,7 @@ p {
   transition: 0.3s;
 }
 .curser {
-  transition: 0.2s;
+  transition: .05s;
   background-color: var(--Neutral-700);
   border-radius: 7px;
 }
@@ -116,7 +116,7 @@ p {
 }
 @media (min-width: 992px) {
   .letter-format {
-    font-size: 2rem;
+    font-size: 2.4rem;
   }
   .result-details div{
   width: 8rem !important;
