@@ -67,8 +67,10 @@
         <!-- mode -->
         <div class="d-lg-flex ms-2 align-items-center d-none">
           <p class="me-2">Mode:</p>
-          <button type="button" name="timeBtn" id="timeBtn" class="btn border text-light me-2 rounded-3 active">Timed(60)</button>
-          <button type="button" name="passageBtn" id="passageBtn" class="btn border text-light  rounded-3">Passage</button>
+          <button type="button" name="timeBtn" id="timeBtn"
+            class="btn border text-light me-2 rounded-3 active">Timed(60)</button>
+          <button type="button" name="passageBtn" id="passageBtn"
+            class="btn border text-light  rounded-3">Passage</button>
         </div>
 
         <!-- phone screen -->
@@ -79,11 +81,17 @@
             Hard
           </button>
           <ul class="dropdown-menu dropdown-menu-dark">
-            <li class="d-flex align-items-center border-bottom pb-2  "><input class="dropdown-item" type="radio" name="difficulty" onclick="easy.click(); btnTitle.textContent ='Easy' "  id="mobile-easy"  ><label for="mobile-easy" class="flex-grow-1">Easy</label></li>
-            <li class="d-flex align-items-center border-bottom py-2  "><input class="dropdown-item" type="radio" name="difficulty" onclick="medium.click(); btnTitle.textContent ='Medium' "  id="mobile-medium"  ><label for="mobile-medium" class="flex-grow-1">Medium</label></li>
-            <li class="d-flex align-items-center  py-2  "><input type="radio" class="dropdown-item" name="difficulty" onclick="hard.click(); btnTitle.textContent ='Hard' "  id="mobile-hard" checked ><label for="mobile-hard" class="flex-grow-1">Hard</label></li>
+            <li class="d-flex align-items-center border-bottom pb-2  "><input class="dropdown-item" type="radio"
+                name="difficulty" onclick="easy.click(); btnTitle.textContent ='Easy' " id="mobile-easy"><label
+                for="mobile-easy" class="flex-grow-1">Easy</label></li>
+            <li class="d-flex align-items-center border-bottom py-2  "><input class="dropdown-item" type="radio"
+                name="difficulty" onclick="medium.click(); btnTitle.textContent ='Medium' " id="mobile-medium"><label
+                for="mobile-medium" class="flex-grow-1">Medium</label></li>
+            <li class="d-flex align-items-center  py-2  "><input type="radio" class="dropdown-item" name="difficulty"
+                onclick="hard.click(); btnTitle.textContent ='Hard' " id="mobile-hard" checked><label for="mobile-hard"
+                class="flex-grow-1">Hard</label></li>
 
-            
+
           </ul>
         </div>
         <!-- mode -->
@@ -93,8 +101,12 @@
             Timed(60)
           </button>
           <ul class="dropdown-menu dropdown-menu-dark disabled">
-            <li class="d-flex align-items-center border-bottom pb-2  "><input class="dropdown-item disabled" type="radio" name="mode" onclick="timeBtn.click(); md.textContent ='Timed(60)' "  id="mobile-time" checked ><label for="mobile-time" class="flex-grow-1">timed(60)</label></li>
-            <li class="d-flex align-items-center  py-2    "><input type="radio" class="dropdown-item"  name="mode" onclick="passageBtn.click(); md.textContent ='Passage' "   id="mobile-passage" ><label for="mobile-passage" class="flex-grow-1">passage</label></li>
+            <li class="d-flex align-items-center border-bottom pb-2  "><input class="dropdown-item disabled"
+                type="radio" name="mode" onclick="timeBtn.click(); md.textContent ='Timed(60)' " id="mobile-time"
+                checked><label for="mobile-time" class="flex-grow-1">timed(60)</label></li>
+            <li class="d-flex align-items-center  py-2    "><input type="radio" class="dropdown-item" name="mode"
+                onclick="passageBtn.click(); md.textContent ='Passage' " id="mobile-passage"><label for="mobile-passage"
+                class="flex-grow-1">passage</label></li>
           </ul>
         </div>
 
@@ -112,8 +124,8 @@
       <div id="words" class="mb-3"></div>
       <!-- restart button -->
       <div id="restart-div" class="d-none justify-content-center border-top border-2  pt-3 ">
-        <button id="restart-btn" type="button" class="btn bg-natural-800 fw-semibold  text-light mt-5  ">Restart Test </span><i
-            class="fa-solid fa-sm fa-rotate-left ms-2"></i></button>
+        <button id="restart-btn" type="button" class="btn bg-natural-800 fw-semibold  text-light mt-5  ">Restart Test
+          </span><i class="fa-solid fa-sm fa-rotate-left ms-2"></i></button>
       </div>
       <!-- start button -->
       <div id="start-div" class="position-absolute start-50 top-50 translate-middle text-center d-none">
@@ -143,7 +155,8 @@
         </div>
         <div class="border rounded-3  p-3 ">
           <p>Characters:</p>
-          <div class="" id="Characters"><span id="correctChar" class="correct"></span> <span style="font-size: x-large;">/</span> <span id="incorrectChar" class="color-red"></span></div>
+          <div class="" id="Characters"><span id="correctChar" class="correct"></span> <span
+              style="font-size: x-large;">/</span> <span id="incorrectChar" class="color-red"></span></div>
         </div>
       </div>
       <div class="container text-end ">
@@ -152,14 +165,13 @@
       <button type="button" id="restart" class="btn btn-light"><span class="me-2">Go Again</span><i
           class="fa-solid fa-sm fa-rotate-left"></i>
       </button>
-     
+
     </div>
   </main>
 
 
-  <!-- <footer class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
-    Coded by <a href="#">Your Name Here</a>.
+  <!-- <footer class="d-flex justify-content-center opacity-25">
+    Coded by <a href="www.linkedin.com/in/muhamed-adel-a6924b363"class="text-light ms-2">muhamed adel</a>.
   </footer> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/js/all.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
