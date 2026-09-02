@@ -29,9 +29,9 @@
       <!-- personal best -->
       <div class="">
         <img src="assets/images/icon-personal-best.svg" class="d-inline-block " alt="">
-        <span class="d-none d-lg-inline">Personal best: </span>
-        <span class="d-lg-none">Best: </span>
-        <span id="PB">WPM</span>
+        <span class="d-none d-lg-inline ">Personal best: </span>
+        <span class="d-lg-none ">Best: </span>
+        <span id="PB" class="text-light">WPM</span>
       </div>
     </nav>
     <!-- options -->
@@ -41,11 +41,11 @@
       <div class="d-flex text-center mb-3  justify-content-center justify-content-lg-start  w100">
         <div class="d-flex flex-column align-items-lg-center flex-xl-row flex-grow-1 border-end  border-2 me-3">
           <p class="me-lg-3 ">WPM: </p>
-          <span class="fw-bold fs-5 me-lg-3  WPM ">99</span>
+          <span class="fw-bold fs-5 me-lg-3  WPM text-light ">99</span>
         </div>
         <div class="d-flex flex-column align-items-lg-center flex-xl-row flex-grow-1 border-end border-2 me-3">
           <p class="me-lg-3 ">Accuracy: </p>
-          <span class="fw-bold fs-5 me-lg-3 Accuracy">99</span>
+          <span class="fw-bold fs-5 me-lg-3 Accuracy correct">99</span>
         </div>
         <div class="d-flex flex-column align-items-lg-center flex-xl-row flex-grow-1 me-lg-3">
           <p class="me-lg-3">Time: </p>
@@ -108,7 +108,12 @@
     </div>
     <!-- words -->
     <div class="container">
-      <div id="words" class=""></div>
+      <div id="words" class="mb-3"></div>
+      <!-- restart button -->
+      <div id="restart-div" class="d-none justify-content-center border-top border-2  pt-3 ">
+        <button id="restart-btn" type="button" class="btn bg-natural-800 fw-semibold  text-light mt-5  ">Restart Test </span><i
+            class="fa-solid fa-sm fa-rotate-left ms-2"></i></button>
+      </div>
       <!-- start button -->
       <div id="start-div" class="position-absolute start-50 top-50 translate-middle text-center d-none">
         <button id="start" type="button" class="btn text-light bg-blue-600  mb-3">Start Typing Text</button>
@@ -129,11 +134,11 @@
       <div class="container d-flex flex-column flex-lg-row justify-content-lg-center gap-4 result-details w100">
         <div class="border rounded-3  p-2">
           <p>WPM:</p>
-          <p class="WPM"> 89</p>
+          <p class="WPM text-light"> 89</p>
         </div>
         <div class="border rounded-3  p-2 ">
           <p>Accuracy:</p>
-          <p class="Accuracy"> 89</p>
+          <p class="Accuracy correct"> 89</p>
         </div>
         <div class="border rounded-3  p-2 ">
           <p>Characters:</p>
