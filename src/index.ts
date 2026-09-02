@@ -19,7 +19,7 @@ let hardBtn = document.getElementById("hard") as HTMLButtonElement;
 
 let timeBtn = document.getElementById("timeBtn") as HTMLButtonElement;
 let passageBtn = document.getElementById("passageBtn") as HTMLButtonElement;
-let mobileBtn =document.querySelectorAll('.dropdown-item')
+let mobileBtn = document.querySelectorAll(".dropdown-item");
 
 let words = document.getElementById("words") as HTMLElement;
 let time = document.getElementById("Time") as HTMLElement;
@@ -35,6 +35,7 @@ let PB = document.getElementById("PB") as HTMLSpanElement;
 let options = document.getElementById("options") as HTMLDivElement;
 let result = document.getElementById("result") as HTMLDivElement;
 
+let imgDiv = document.getElementById("img-div");
 let resultImg = document.getElementById("result-img") as HTMLImageElement;
 let resultTitle = document.getElementById("result-title") as HTMLHeadingElement;
 let resultText = document.getElementById("result-text") as HTMLParagraphElement;
@@ -45,6 +46,9 @@ let spinner = document.getElementById("loading") as HTMLDivElement;
 
 let restartDiv = document.getElementById("restart-div") as HTMLDivElement;
 let restartBtn = document.getElementById("restart-btn") as HTMLButtonElement;
+
+let correct = document.getElementById("correctChar") as HTMLSpanElement;
+let incorrect = document.getElementById("incorrectChar") as HTMLSpanElement;
 
 // ==================== Variables ====================
 
@@ -61,6 +65,7 @@ let currentLetter: Element | undefined;
 
 let typedChar: number = 0;
 let correctChar: number = 0;
+let incorrectChar: number = 0;
 
 let accuracyValue: number = 100;
 
@@ -68,7 +73,8 @@ let interval: any;
 
 let keySound = new Audio("./assets/audio/key-press.mp3");
 
-let best: number;
+let best: number = 0;
+let flag: number;
 
 // ==================== Helper Functions ====================
 
@@ -224,8 +230,6 @@ timeBtn.addEventListener("click", () => {
   // time.classList.remove("d-none");
 });
 
-
-
 // ==================== Passage Mode ====================
 
 passageBtn.addEventListener("click", () => {
@@ -239,7 +243,6 @@ passageBtn.addEventListener("click", () => {
 
   // time.classList.add("d-none");
 });
-
 
 // ==================== Typing ====================
 
@@ -265,6 +268,7 @@ function handleTyping(e: KeyboardEvent) {
     correctChar++;
   } else {
     currentLetter?.classList.add("incorrect");
+    incorrectChar++;
   }
 
   // Calculate Accuracy
@@ -311,10 +315,16 @@ function endGame(count: number) {
   console.log(best);
 
   const currentWPM = wpm();
-
-  if (currentWPM > best) {
+  if (best === 0) {
     PB.textContent = `${currentWPM} WPM`;
     localStorage.setItem("personal best", `${currentWPM}`);
+    flag = 0;
+  } else if (currentWPM > best) {
+    PB.textContent = `${currentWPM} WPM`;
+    localStorage.setItem("personal best", `${currentWPM}`);
+    flag = 1;
+  } else {
+    flag = 2;
   }
 
   options.classList.replace("d-flex", "d-none");
@@ -347,13 +357,25 @@ start.addEventListener("click", showWords);
 // ==================== Result Page ====================
 
 function resultPage() {
-  resultImg.src = "./assets/images/icon-completed.svg";
-
+  if (flag === 0) {
+    resultImg.src = "./assets/images/icon-completed.svg";
+    resultText.innerText =
+      "You've set the bar.Now the real challenge begins-time to beat it.";
+    resultTitle.textContent = "Baseline Established!";
+  } else if (flag === 1) {
+    resultImg.src = "./assets/images/icon-new-pb.svg";
+    imgDiv?.classList.remove("green-shadow-700");
+    resultImg.classList.remove("green-shadow-600");
+    resultTitle.textContent = "High Score Smashed!";
+    resultText.innerText = "You're getting faster.That was incredible typing.";
+  } else if (flag === 2) {
+    resultImg.src = "./assets/images/icon-completed.svg";
+    resultTitle.textContent = "Test Complete!";
+    resultText.innerText = "Solid run. Keep pushing to beat your high score.";
+  }
+  correct.textContent = `${correctChar}`
+  incorrect.textContent = `${incorrectChar}`
   resultTitle.style = `color : white`;
-
-  resultTitle.textContent = "Test Complete!";
-
-  resultText.innerText = "Solid run. Keep pushing to beat your high score.";
 
   resultbtn.addEventListener("click", () => {
     result.classList.replace("d-flex", "d-none");
@@ -377,7 +399,9 @@ fetch("./data.json")
     spinner.classList.add("d-none");
 
     startDiv.classList.remove("d-none");
-    PB.textContent = `${localStorage.getItem("personal best")} WPM`;
+    if (localStorage.getItem("personal best")) {
+      PB.textContent = `${localStorage.getItem("personal best")} WPM`;
+    }
 
     // Easy
 

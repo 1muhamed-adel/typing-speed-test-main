@@ -96,7 +96,7 @@ p {
   border-color: var(--Blue-500) !important;
   
 }
-.Accuracy,.WPM{
+.Accuracy,.WPM,#correctChar,#incorrectChar{
   font-weight: 700;
   font-size: x-large ;
 }
