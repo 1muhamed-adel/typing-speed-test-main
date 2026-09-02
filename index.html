@@ -67,33 +67,34 @@
         <!-- mode -->
         <div class="d-lg-flex ms-2 align-items-center d-none">
           <p class="me-2">Mode:</p>
-          <button type="button" id="time-btn" class="btn border text-light me-2 rounded-3 active">Timed(60)</button>
-          <button type="button" id="passage-btn" class="btn border text-light  rounded-3">Passage</button>
+          <button type="button" name="timeBtn" id="timeBtn" class="btn border text-light me-2 rounded-3 active">Timed(60)</button>
+          <button type="button" name="passageBtn" id="passageBtn" class="btn border text-light  rounded-3">Passage</button>
         </div>
 
         <!-- phone screen -->
         <!-- difficulty -->
         <div class="dropdown d-lg-none flex-grow-1  ">
-          <button class="btn border text-light   dropdown-toggle" type="button" data-bs-toggle="dropdown"
+          <button id="btnTitle" class="btn border text-light   dropdown-toggle" type="button" data-bs-toggle="dropdown"
             aria-expanded="false">
-            Difficulty
+            Hard
           </button>
-          <ul class="dropdown-menu">
-            <li><a onclick="easy.click()" class="dropdown-item" href="#">Easy</a></li>
-            <li><a onclick="medium.click()" class="dropdown-item" href="#">Medium</a></li>
-            <li><a onclick="hard.click()" class="dropdown-item" href="#">Hard</a></li>
+          <ul class="dropdown-menu dropdown-menu-dark">
+            <li class="d-flex align-items-center border-bottom pb-2  "><input class="dropdown-item" type="radio" name="difficulty" onclick="easy.click(); btnTitle.textContent ='Easy' "  id="mobile-easy"  ><label for="mobile-easy" class="flex-grow-1">Easy</label></li>
+            <li class="d-flex align-items-center border-bottom py-2  "><input class="dropdown-item" type="radio" name="difficulty" onclick="medium.click(); btnTitle.textContent ='Medium' "  id="mobile-medium"  ><label for="mobile-medium" class="flex-grow-1">Medium</label></li>
+            <li class="d-flex align-items-center  py-2  "><input type="radio" class="dropdown-item" name="difficulty" onclick="hard.click(); btnTitle.textContent ='Hard' "  id="mobile-hard" checked ><label for="mobile-hard" class="flex-grow-1">Hard</label></li>
+
+            
           </ul>
         </div>
         <!-- mode -->
         <div class="dropdown d-lg-none flex-grow-1 ">
-          <button class="btn border  text-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
+          <button id="md" class="btn border  text-light dropdown-toggle" type="button" data-bs-toggle="dropdown"
             aria-expanded="false">
-            Mode
+            Timed(60)
           </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <ul class="dropdown-menu dropdown-menu-dark disabled">
+            <li class="d-flex align-items-center border-bottom pb-2  "><input class="dropdown-item disabled" type="radio" name="mode" onclick="timeBtn.click(); md.textContent ='Timed(60)' "  id="mobile-time" checked ><label for="mobile-time" class="flex-grow-1">timed(60)</label></li>
+            <li class="d-flex align-items-center  py-2    "><input type="radio" class="dropdown-item"  name="mode" onclick="passageBtn.click(); md.textContent ='Passage' "   id="mobile-passage" ><label for="mobile-passage" class="flex-grow-1">passage</label></li>
           </ul>
         </div>
 

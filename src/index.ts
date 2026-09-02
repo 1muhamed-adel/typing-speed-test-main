@@ -17,8 +17,9 @@ let easyBtn = document.getElementById("easy") as HTMLButtonElement;
 let medBtn = document.getElementById("medium") as HTMLButtonElement;
 let hardBtn = document.getElementById("hard") as HTMLButtonElement;
 
-let timeBtn = document.getElementById("time-btn") as HTMLButtonElement;
-let passageBtn = document.getElementById("passage-btn") as HTMLButtonElement;
+let timeBtn = document.getElementById("timeBtn") as HTMLButtonElement;
+let passageBtn = document.getElementById("passageBtn") as HTMLButtonElement;
+let mobileBtn =document.querySelectorAll('.dropdown-item')
 
 let words = document.getElementById("words") as HTMLElement;
 let time = document.getElementById("Time") as HTMLElement;
@@ -97,6 +98,11 @@ function disableBtn() {
 
   timeBtn.classList.add("disabled");
   passageBtn.classList.add("disabled");
+
+  mobileBtn.forEach((element: Element) => {
+    const button = element as HTMLButtonElement;
+    button.disabled = true;
+  });
 }
 
 // ==================== Get Random Passage ====================
@@ -218,6 +224,8 @@ timeBtn.addEventListener("click", () => {
   // time.classList.remove("d-none");
 });
 
+
+
 // ==================== Passage Mode ====================
 
 passageBtn.addEventListener("click", () => {
@@ -231,6 +239,7 @@ passageBtn.addEventListener("click", () => {
 
   // time.classList.add("d-none");
 });
+
 
 // ==================== Typing ====================
 
@@ -307,7 +316,6 @@ function endGame(count: number) {
     PB.textContent = `${currentWPM} WPM`;
     localStorage.setItem("personal best", `${currentWPM}`);
   }
-
 
   options.classList.replace("d-flex", "d-none");
 

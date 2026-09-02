@@ -101,6 +101,33 @@ p {
   font-size: x-large ;
 }
 
+input[type="radio"] {
+  appearance: none;
+  width: 20px ;
+  height: 20px;
+  border: 2px solid #999;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  margin-right: 10px;
+  margin-left: 5px;
+  padding: 0 !important;
+}
+
+input[type="radio"]:checked {
+  border-color: var(--Blue-500);
+  border-width: 5px;
+}
+
+/* input[type="checkbox"]:checked::after {
+  content: "✓";
+  color: white;
+  position: absolute;
+  left: 3px;
+  top: -2px;
+  font-size: 14px;
+} */
+
 #result{
   transition: 1s;
 }
