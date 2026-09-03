@@ -135,6 +135,11 @@ input[type="radio"]:checked {
   animation: rotate 1s infinite alternate;
   
 }
+#typingInput {
+    position: fixed;
+    left: -1000px;
+    opacity: 0;
+}
 @keyframes rotate {
   from{
     transform: scale(0);

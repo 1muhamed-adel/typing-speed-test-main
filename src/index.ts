@@ -50,6 +50,8 @@ let restartBtn = document.getElementById("restart-btn") as HTMLButtonElement;
 let correct = document.getElementById("correctChar") as HTMLSpanElement;
 let incorrect = document.getElementById("incorrectChar") as HTMLSpanElement;
 
+const typingInput = document.getElementById("typingInput") as HTMLInputElement;
+
 // ==================== Variables ====================
 
 let totalChars: number;
@@ -179,6 +181,8 @@ function startGame() {
   clearInterval(interval);
   startTime = performance.now();
 
+  typingInput.focus();
+
   typedChar = 0;
   correctChar = 0;
 
@@ -303,6 +307,10 @@ function handleTyping(e: KeyboardEvent) {
 
   currentLetter?.classList.add("curser");
 }
+typingInput.addEventListener("input", (e) => {
+    const text = (e.target as HTMLInputElement).value;
+
+});
 
 // ==================== End Game ====================
 
@@ -373,8 +381,8 @@ function resultPage() {
     resultTitle.textContent = "Test Complete!";
     resultText.innerText = "Solid run. Keep pushing to beat your high score.";
   }
-  correct.textContent = `${correctChar}`
-  incorrect.textContent = `${incorrectChar}`
+  correct.textContent = `${correctChar}`;
+  incorrect.textContent = `${incorrectChar}`;
   resultTitle.style = `color : white`;
 
   resultbtn.addEventListener("click", () => {
