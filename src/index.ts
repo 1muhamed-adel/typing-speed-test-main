@@ -219,6 +219,9 @@ function startGame() {
   currentLetter?.classList.add("curser");
 
   window.addEventListener("keyup", handleTyping);
+  if (!mobileInput.classList.contains('d-none')) {
+    mobileInput.addEventListener('input', handleTyping);
+  }
 }
 
 // ==================== Time Mode ====================
@@ -251,8 +254,10 @@ passageBtn.addEventListener("click", () => {
 
 // ==================== Typing ====================
 
-function handleTyping(e: KeyboardEvent) {
-  if (e.key.length !== 1) {
+function handleTyping(e: KeyboardEvent | InputEvent) {
+  const key = e instanceof KeyboardEvent ? e.key : e.data ?? "";
+
+  if (key.length !== 1) {
     return;
   }
 
@@ -267,7 +272,7 @@ function handleTyping(e: KeyboardEvent) {
 
   // Check Character
 
-  if (e.key === currentLetter?.textContent) {
+  if (key === currentLetter?.textContent) {
     currentLetter.classList.add("correct");
 
     correctChar++;
@@ -313,6 +318,9 @@ function handleTyping(e: KeyboardEvent) {
 
 function endGame(count: number) {
   window.removeEventListener("keyup", handleTyping);
+  if (!mobileInput.classList.contains('d-none')) {
+    mobileInput.removeEventListener('input',handleTyping)
+  }
   mobileInput.remove()
 
   clearInterval(interval);

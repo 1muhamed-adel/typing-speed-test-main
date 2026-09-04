@@ -142,6 +142,9 @@ function startGame() {
     currentLetter = words.children[0];
     currentLetter?.classList.add("curser");
     window.addEventListener("keyup", handleTyping);
+    if (!mobileInput.classList.contains('d-none')) {
+        mobileInput.addEventListener('input', handleTyping);
+    }
 }
 // ==================== Time Mode ====================
 timeBtn.addEventListener("click", () => {
@@ -161,7 +164,8 @@ passageBtn.addEventListener("click", () => {
 });
 // ==================== Typing ====================
 function handleTyping(e) {
-    if (e.key.length !== 1) {
+    const key = e instanceof KeyboardEvent ? e.key : e.data ?? "";
+    if (key.length !== 1) {
         return;
     }
     keySound.currentTime = 0;
@@ -171,7 +175,7 @@ function handleTyping(e) {
         Element.textContent = `${wpm()}`;
     });
     // Check Character
-    if (e.key === currentLetter?.textContent) {
+    if (key === currentLetter?.textContent) {
         currentLetter.classList.add("correct");
         correctChar++;
     }
@@ -204,6 +208,9 @@ function handleTyping(e) {
 // ==================== End Game ====================
 function endGame(count) {
     window.removeEventListener("keyup", handleTyping);
+    if (!mobileInput.classList.contains('d-none')) {
+        mobileInput.removeEventListener('input', handleTyping);
+    }
     mobileInput.remove();
     clearInterval(interval);
     best = Number(localStorage.getItem("personal best") ?? 0);

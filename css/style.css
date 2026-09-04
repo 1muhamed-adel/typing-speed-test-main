@@ -152,6 +152,7 @@ input[type="radio"]:checked {
     transform: scale(1);
   }
 }
+
 @media (max-width: 992px) {
   .w100 {
     width: 100% !important;
@@ -174,5 +175,8 @@ input[type="radio"]:checked {
 .Accuracy,.WPM,#correctChar,#incorrectChar{
   font-weight: 700;
   font-size: x-large ;
+}
+#mobile-input{
+  display: none;
 }
 }
