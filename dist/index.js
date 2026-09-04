@@ -26,7 +26,7 @@ let restartDiv = document.getElementById("restart-div");
 let restartBtn = document.getElementById("restart-btn");
 let correct = document.getElementById("correctChar");
 let incorrect = document.getElementById("incorrectChar");
-let mobileInput = document.getElementById('mobile-input');
+let mobileInput = document.getElementById("mobile-input");
 // ==================== Variables ====================
 let totalChars;
 let difficulty;
@@ -141,9 +141,11 @@ function startGame() {
     }
     currentLetter = words.children[0];
     currentLetter?.classList.add("curser");
-    window.addEventListener("keyup", handleTyping);
-    if (!mobileInput.classList.contains('d-none')) {
-        mobileInput.addEventListener('input', handleTyping);
+    if (window.innerWidth >= 992) {
+        window.addEventListener("keyup", handleTyping);
+    }
+    if (!mobileInput.classList.contains("d-none")) {
+        mobileInput.addEventListener("input", handleTyping);
     }
 }
 // ==================== Time Mode ====================
@@ -164,7 +166,7 @@ passageBtn.addEventListener("click", () => {
 });
 // ==================== Typing ====================
 function handleTyping(e) {
-    const key = e instanceof KeyboardEvent ? e.key : e.data ?? "";
+    const key = e instanceof KeyboardEvent ? e.key : (e.data ?? "");
     if (key.length !== 1) {
         return;
     }
@@ -207,9 +209,11 @@ function handleTyping(e) {
 }
 // ==================== End Game ====================
 function endGame(count) {
-    window.removeEventListener("keyup", handleTyping);
-    if (!mobileInput.classList.contains('d-none')) {
-        mobileInput.removeEventListener('input', handleTyping);
+    if (window.innerWidth >= 992) {
+        window.removeEventListener("keyup", handleTyping);
+    }
+    if (!mobileInput.classList.contains("d-none")) {
+        mobileInput.removeEventListener("input", handleTyping);
     }
     mobileInput.remove();
     clearInterval(interval);
@@ -243,7 +247,7 @@ function showWords() {
     startGame();
 }
 words.addEventListener("mouseup", showWords);
-mobileInput.addEventListener('mouseup', showWords);
+mobileInput.addEventListener("mouseup", showWords);
 start.addEventListener("click", showWords);
 // ==================== Result Page ====================
 function resultPage() {
@@ -320,8 +324,9 @@ fetch("./data.json")
         // Reset game values
         typedChar = 0;
         correctChar = 0;
+        incorrectChar = 0;
         accuracyValue = 100;
-        if (!mobileInput.classList.contains('d-none')) {
+        if (!mobileInput.classList.contains("d-none")) {
             mobileInput.value = "";
         }
         display(data, difficulty);

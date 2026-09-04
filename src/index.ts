@@ -50,7 +50,7 @@ let restartBtn = document.getElementById("restart-btn") as HTMLButtonElement;
 let correct = document.getElementById("correctChar") as HTMLSpanElement;
 let incorrect = document.getElementById("incorrectChar") as HTMLSpanElement;
 
-let mobileInput = document.getElementById('mobile-input') as HTMLInputElement
+let mobileInput = document.getElementById("mobile-input") as HTMLInputElement;
 
 // ==================== Variables ====================
 
@@ -194,7 +194,6 @@ function startGame() {
   words.removeEventListener("mouseup", showWords);
   mobileInput.removeEventListener("mouseup", showWords);
 
-
   if (timeBtn.classList.contains("active")) {
     interval = setInterval(() => {
       timer--;
@@ -218,9 +217,12 @@ function startGame() {
 
   currentLetter?.classList.add("curser");
 
-  window.addEventListener("keyup", handleTyping);
-  if (!mobileInput.classList.contains('d-none')) {
-    mobileInput.addEventListener('input', handleTyping);
+  if (window.innerWidth >= 992) {
+    window.addEventListener("keyup", handleTyping);
+  }
+
+  if (!mobileInput.classList.contains("d-none")) {
+    mobileInput.addEventListener("input", handleTyping);
   }
 }
 
@@ -255,7 +257,7 @@ passageBtn.addEventListener("click", () => {
 // ==================== Typing ====================
 
 function handleTyping(e: KeyboardEvent | InputEvent) {
-  const key = e instanceof KeyboardEvent ? e.key : e.data ?? "";
+  const key = e instanceof KeyboardEvent ? e.key : (e.data ?? "");
 
   if (key.length !== 1) {
     return;
@@ -317,11 +319,13 @@ function handleTyping(e: KeyboardEvent | InputEvent) {
 // ==================== End Game ====================
 
 function endGame(count: number) {
-  window.removeEventListener("keyup", handleTyping);
-  if (!mobileInput.classList.contains('d-none')) {
-    mobileInput.removeEventListener('input',handleTyping)
+  if (window.innerWidth >= 992) {
+    window.removeEventListener("keyup", handleTyping);
   }
-  mobileInput.remove()
+  if (!mobileInput.classList.contains("d-none")) {
+    mobileInput.removeEventListener("input", handleTyping);
+  }
+  mobileInput.remove();
 
   clearInterval(interval);
 
@@ -365,7 +369,7 @@ function showWords() {
 }
 
 words.addEventListener("mouseup", showWords);
-mobileInput.addEventListener('mouseup',showWords)
+mobileInput.addEventListener("mouseup", showWords);
 
 start.addEventListener("click", showWords);
 
@@ -474,10 +478,11 @@ fetch("./data.json")
       // Reset game values
       typedChar = 0;
       correctChar = 0;
+      incorrectChar = 0;
       accuracyValue = 100;
 
-      if (!mobileInput.classList.contains('d-none')) {
-        mobileInput.value=""
+      if (!mobileInput.classList.contains("d-none")) {
+        mobileInput.value = "";
       }
 
       display(data, difficulty);
