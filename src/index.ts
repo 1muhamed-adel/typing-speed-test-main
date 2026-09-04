@@ -476,6 +476,10 @@ fetch("./data.json")
       correctChar = 0;
       accuracyValue = 100;
 
+      if (!mobileInput.classList.contains('d-none')) {
+        mobileInput.value=""
+      }
+
       display(data, difficulty);
       // Reset Accuracy
       accuracy.forEach((element) => {
