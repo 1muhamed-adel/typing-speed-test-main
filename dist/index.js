@@ -26,6 +26,7 @@ let restartDiv = document.getElementById("restart-div");
 let restartBtn = document.getElementById("restart-btn");
 let correct = document.getElementById("correctChar");
 let incorrect = document.getElementById("incorrectChar");
+let mobileInput = document.getElementById('mobile-input');
 // ==================== Variables ====================
 let totalChars;
 let difficulty;
@@ -116,10 +117,12 @@ function startGame() {
     startTime = performance.now();
     typedChar = 0;
     correctChar = 0;
+    incorrectChar = 0;
     restartDiv.classList.replace("d-none", "d-flex");
     disableBtn();
     console.log(totalChars);
     words.removeEventListener("mouseup", showWords);
+    mobileInput.removeEventListener("mouseup", showWords);
     if (timeBtn.classList.contains("active")) {
         interval = setInterval(() => {
             timer--;
@@ -201,6 +204,7 @@ function handleTyping(e) {
 // ==================== End Game ====================
 function endGame(count) {
     window.removeEventListener("keyup", handleTyping);
+    mobileInput.remove();
     clearInterval(interval);
     best = Number(localStorage.getItem("personal best") ?? 0);
     console.log(best);
@@ -232,6 +236,7 @@ function showWords() {
     startGame();
 }
 words.addEventListener("mouseup", showWords);
+mobileInput.addEventListener('mouseup', showWords);
 start.addEventListener("click", showWords);
 // ==================== Result Page ====================
 function resultPage() {

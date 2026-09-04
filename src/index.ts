@@ -50,6 +50,7 @@ let restartBtn = document.getElementById("restart-btn") as HTMLButtonElement;
 let correct = document.getElementById("correctChar") as HTMLSpanElement;
 let incorrect = document.getElementById("incorrectChar") as HTMLSpanElement;
 
+let mobileInput = document.getElementById('mobile-input') as HTMLInputElement
 
 // ==================== Variables ====================
 
@@ -180,9 +181,9 @@ function startGame() {
   clearInterval(interval);
   startTime = performance.now();
 
-  
   typedChar = 0;
   correctChar = 0;
+  incorrectChar = 0;
 
   restartDiv.classList.replace("d-none", "d-flex");
 
@@ -191,6 +192,8 @@ function startGame() {
   console.log(totalChars);
 
   words.removeEventListener("mouseup", showWords);
+  mobileInput.removeEventListener("mouseup", showWords);
+
 
   if (timeBtn.classList.contains("active")) {
     interval = setInterval(() => {
@@ -306,11 +309,11 @@ function handleTyping(e: KeyboardEvent) {
   currentLetter?.classList.add("curser");
 }
 
-
 // ==================== End Game ====================
 
 function endGame(count: number) {
   window.removeEventListener("keyup", handleTyping);
+  mobileInput.remove()
 
   clearInterval(interval);
 
@@ -354,6 +357,7 @@ function showWords() {
 }
 
 words.addEventListener("mouseup", showWords);
+mobileInput.addEventListener('mouseup',showWords)
 
 start.addEventListener("click", showWords);
 
