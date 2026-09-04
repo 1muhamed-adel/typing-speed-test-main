@@ -96,10 +96,7 @@ p {
   border-color: var(--Blue-500) !important;
   
 }
-.Accuracy,.WPM,#correctChar,#incorrectChar{
-  font-weight: 700;
-  font-size: x-large ;
-}
+
 
 input[type="radio"] {
   appearance: none;
@@ -130,6 +127,7 @@ input[type="radio"]:checked {
 
 #result{
   transition: 1s;
+  /* height: 80vh; */
 }
 #img-1,#img-2{
   animation: rotate 1s infinite alternate;
@@ -161,6 +159,10 @@ input[type="radio"]:checked {
   .letter-format {
     font-size: 1.7rem;
   }
+  .Accuracy,.WPM,#correctChar,#incorrectChar{
+  font-weight: 700;
+  font-size: large ;
+}
 }
 @media (min-width: 992px) {
   .letter-format {
@@ -168,5 +170,9 @@ input[type="radio"]:checked {
   }
   .result-details div{
   width: 8rem !important;
+}
+.Accuracy,.WPM,#correctChar,#incorrectChar{
+  font-weight: 700;
+  font-size: x-large ;
 }
 }
